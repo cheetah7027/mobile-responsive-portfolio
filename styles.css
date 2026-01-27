@@ -1,0 +1,571 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-image: url('Desktop\ -\ 19.svg');
+    background-color: #533E0E;
+    /* Fallback color */
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: center;
+    min-height: 100vh;
+    padding: 0 120px 40px;
+    /* Remove top padding since navbar is sticky */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    max-width: 1100px;
+    background-color: #F9F1DE;
+    border-radius: 0 0 25px 25px;
+    padding: 15px 40px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    animation: slideDown 0.5s ease-out 0.8s forwards;
+    opacity: 0;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    color: #533E0E;
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    color: #533E0E;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 300;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #e9b949;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:last-child {
+    color: #e9b949;
+    font-weight: 400;
+}
+
+.nav-links a:last-child:hover {
+    color: #533E0E;
+    text-shadow: 0 0 10px rgba(233, 185, 73, 0.4);
+}
+
+.hero-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-rows: auto auto;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.card {
+    background-color: #F9F1DE;
+    border-radius: 25px;
+    padding: 30px;
+    position: relative;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+.card.clicked {
+    transform: scale(0.95);
+}
+
+.top-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.top-row .card {
+    min-height: 140px;
+}
+
+.bottom-row {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    gap: 25px;
+}
+
+.bottom-row .card {
+    min-height: 300px;
+}
+
+.profile-card {
+    padding: 0;
+    overflow: hidden;
+    min-height: 140px;
+    animation: slideInFromTop 0.6s ease-out forwards;
+    position: relative;
+}
+
+.profile-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 10%;
+    transform: scale(1);
+}
+
+.profile-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(to top, rgba(83, 62, 14, 0.7), transparent);
+    opacity: 0;
+}
+
+.hire-card {
+    background-color: #e9b949;
+    animation: slideInFromRight 0.7s ease-out 0.8s forwards;
+    opacity: 0;
+}
+
+h2 {
+    color: #533E0E;
+    font-size: 36px;
+    line-height: 1.15;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+
+.arrow-button {
+    width: 75px;
+    height: 75px;
+    background-color: #F4E3BC;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+    transition: transform 0.3s ease;
+}
+
+.arrow-button:hover {
+    transform: translateX(10px);
+}
+
+.arrow-button img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.social-footer {
+    width: 100%;
+    max-width: 1100px;
+    background-color: #F9F1DE;
+    border-radius: 25px 25px 0 0;
+    padding: 25px 30px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    animation: slideUp 0.5s ease-out 0.8s forwards;
+    opacity: 0;
+}
+
+.social-footer h3 {
+    color: #533E0E;
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.social-icon {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+.social-icon img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    color: #533E0E;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover img {
+    opacity: 0.7;
+}
+
+@media (max-width: 1600px) {
+    body {
+        padding: 0 80px 40px;
+    }
+}
+
+@media (max-width: 1200px) {
+    body {
+        padding: 0 60px 40px;
+    }
+
+    .navbar,
+    .social-footer {
+        padding: 15px 35px;
+    }
+
+    h2,
+    .bottom-row h2,
+    .top-row .card:first-child h2 {
+        font-size: 28px;
+    }
+
+    .social-footer h3 {
+        font-size: 20px;
+    }
+
+    .nav-links a {
+        font-size: 20px;
+    }
+}
+
+/* Mobile Styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background-color: #533E0E;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 0 20px 20px;
+    }
+
+    .navbar {
+        padding: 15px 25px;
+        margin-bottom: 20px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #F9F1DE;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        transform: translateY(-100%);
+        transition: transform 0.4s ease-in-out;
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+    }
+
+    .nav-links a {
+        font-size: 32px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s ease;
+    }
+
+    .nav-links.active a {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Stagger animation delay for nav items */
+    .nav-links.active a:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    .nav-links.active a:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    .nav-links.active a:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+
+    .nav-links.active a:nth-child(4) {
+        transition-delay: 0.4s;
+    }
+
+    /* Fixed Typography as requested */
+    h2,
+    .top-row .card:first-child h2,
+    .bottom-row h2 {
+        font-size: 36px;
+        line-height: 1.2;
+    }
+
+    .social-footer h3 {
+        font-size: clamp(18px, 4vw, 22px);
+    }
+
+    /* Grid Layout Changes */
+    .container {
+        width: 100%;
+    }
+
+    .hero-grid {
+        grid-template-rows: auto;
+        gap: 20px;
+    }
+
+    .top-row,
+    .bottom-row {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .profile-card {
+        order: -1;
+        /* Make profile image first */
+        min-height: 380px;
+        /* Increased height for impact */
+    }
+
+    .profile-card img {
+        object-position: center top;
+    }
+
+    .card {
+        min-height: auto;
+        padding: 25px;
+    }
+
+    /* Buttons & Touch Targets */
+    /* Buttons & Touch Targets */
+    .arrow-button {
+        margin-top: 20px;
+        /* Reverted to round desktop style */
+    }
+
+    .arrow-button:hover {
+        transform: none;
+        /* remove hover translation on touch */
+    }
+
+    /* Footer adjustments */
+    .social-footer {
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .social-links {
+        gap: 30px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .social-icon {
+        width: 44px;
+        /* Minimum touch target */
+        height: 44px;
+    }
+}
+
+
+
+/* Add animation for page load */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.top-row .card:first-child {
+    min-height: 120px;
+    padding: 25px;
+    animation: slideInFromLeft 0.6s ease-out 0.8s forwards;
+    opacity: 0;
+}
+
+.top-row .card:first-child h2 {
+    font-size: 36px;
+    line-height: 1.15;
+}
+
+.top-row .card:last-child {
+    animation: slideInFromRight 0.6s ease-out 0.8s forwards;
+    opacity: 0;
+}
+
+.bottom-row .card:first-child {
+    animation: slideInFromLeft 0.7s ease-out 0.8s forwards;
+    opacity: 0;
+}
+
+.bottom-row .card:nth-child(2) {
+    animation: slideUp 0.7s ease-out 0.8s forwards;
+    opacity: 0;
+}
