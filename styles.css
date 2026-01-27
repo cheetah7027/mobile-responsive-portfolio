@@ -8,7 +8,7 @@
 }
 
 body {
-    background-image: url('Desktop\ -\ 19.svg');
+    background-image: url('background.svg');
     background-color: #533E0E;
     /* Fallback color */
     background-size: cover;
