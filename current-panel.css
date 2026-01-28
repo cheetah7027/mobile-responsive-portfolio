@@ -1,0 +1,93 @@
+/* Current Panel Styles */
+#current-panel-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2002;
+    /* Stack order */
+    pointer-events: none;
+    overflow: hidden;
+}
+
+#current-panel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+#current-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 650px;
+    height: 100%;
+    background: #F9F1DE;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* State Classes */
+body.current-panel-open {
+    overflow: hidden;
+}
+
+body.current-panel-open #current-panel-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+body.current-panel-open #current-panel {
+    transform: translateX(0);
+}
+
+body.current-panel-open .content-shift {
+    transform: translateX(-50px) scale(0.98);
+    opacity: 0.4;
+    filter: blur(1px);
+    pointer-events: none;
+}
+
+/* Panel Content */
+.current-panel-content {
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.current-close-btn {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    background: none;
+    border: none;
+    font-size: 40px;
+    color: #533E0E;
+    cursor: pointer;
+    z-index: 20;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+.current-close-btn:hover {
+    transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+    #current-panel {
+        width: 100%;
+    }
+}

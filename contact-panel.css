@@ -1,0 +1,164 @@
+/* Contact Panel Styles */
+#contact-panel-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2001;
+    /* Higher than about panel just in case */
+    pointer-events: none;
+    overflow: hidden;
+}
+
+#contact-panel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+#contact-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 650px;
+    height: 100%;
+    background: #F9F1DE;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* State Classes for Contact Panel */
+body.contact-panel-open {
+    overflow: hidden;
+}
+
+body.contact-panel-open #contact-panel-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+body.contact-panel-open #contact-panel {
+    transform: translateX(0);
+}
+
+/* Reusing Shift Effect from About Panel logic via shared class or duplicated logic if completely isolated */
+/* Since we can't modify existing CSS easily to share a class, we add the shift class via JS */
+body.contact-panel-open .content-shift {
+    transform: translateX(-50px) scale(0.98);
+    opacity: 0.4;
+    filter: blur(1px);
+    pointer-events: none;
+}
+
+/* Contact Specific Components */
+.contact-close-btn {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    background: none;
+    border: none;
+    font-size: 40px;
+    color: #533E0E;
+    cursor: pointer;
+    z-index: 20;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+.contact-close-btn:hover {
+    transform: rotate(90deg);
+}
+
+.contact-links {
+    margin-top: 20px;
+}
+
+.contact-card {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    background-color: #fcebc4;
+}
+
+/* Form Styles */
+.contact-form {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(83, 62, 14, 0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #533E0E;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid rgba(83, 62, 14, 0.1);
+    border-radius: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    color: #533E0E;
+    background: #fafafa;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #e9b949;
+    background: white;
+}
+
+.submit-btn {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.back-home-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #contact-panel {
+        width: 100%;
+    }
+
+    .contact-form {
+        padding: 20px;
+    }
+}
